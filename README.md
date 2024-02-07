@@ -13,4 +13,3 @@ An experimental todo app for my own personal use.  Who knows maybe it will be us
 
 ## Usage
 
-

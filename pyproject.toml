@@ -12,6 +12,7 @@ uvicorn = {extras = ["standard"], version = "^0.27.0.post1"}
 sqlmodel = "^0.0.14"
 alembic = "^1.13.1"
 pydantic-settings = "^2.1.0"
+psycopg2 = "^2.9.9"
 
 
 [build-system]

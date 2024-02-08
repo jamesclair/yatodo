@@ -1,10 +1,18 @@
-from pydantic_settings import BaseSettings
+from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
 class Settings(BaseSettings):
-    app_name: str = "Awesome API"
-    admin_email: str
-    items_per_user: int = 50
+    DB_NAME: str
+    DB_HOSTNAME: str
+    DB_USERNAME: str
+    DB_PASSWORD: str
+    DB_PORT: str
+
+    model_config = SettingsConfigDict(env_file=".env")
+
+    @property
+    def DB_URL(self) -> str:
+        return f"postgresql://{self.DB_USERNAME}:{self.DB_PASSWORD}@{self.DB_HOSTNAME}:{self.DB_PORT}/{self.DB_NAME}"
 
 
 settings = Settings()

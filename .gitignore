@@ -1,4 +1,4 @@
 .env
 .venv
 .git
-*__pycache__/
+__pycache__

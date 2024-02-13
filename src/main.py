@@ -1,23 +1,33 @@
-from fastapi import FastAPI
-from .config import settings
+from fastapi import Depends, FastAPI, HTTPException
+from sqlalchemy.orm import Session
+
+from . import models, crud, schemas
+from .database import SessionLocal, engine
+
+
+import logging
+
+log = logging.getLogger(__name__)
+log.setLevel(logging.DEBUG)
+
 
 app = FastAPI()
 
 
-@app.get("/")
-async def read_root():
-    return {"Hello": "World"}
+def get_db():
+    db = SessionLocal()
+    try:
+        yield db
+    finally:
+        db.close()
 
 
-@app.get("/")
-async def read_tasks():
-    return {"Hello": "World"}
+@app.get("/tasks", response_model=list[schemas.Task])
+def get_tasks(offset: int = 0, limit: int = 100, db: Session = Depends(get_db)):
+    tasks = crud.get_tasks(offset=offset, limit=limit, db=db)
+    return tasks
 
 
-@app.get("/info")
-async def info():
-    return {
-        "db_name": settings.DB_NAME,
-        "db_password": settings.DB_PASSWORD,
-        "db_username": settings.DB_USERNAME,
-    }
+@app.post("/task", response_model=schemas.Task)
+def create_task(task: schemas.TaskCreate, db: Session = Depends(get_db)):
+    return crud.create_task(db=db, task=task)

@@ -31,7 +31,11 @@ def upgrade() -> None:
         sa.Column("id", sa.Integer, primary_key=True),
         sa.Column("name", sa.String(1000), nullable=False),
         sa.Column(
-            "status", sa.Integer, sa.ForeignKey("status.id"), nullable=False, default=1
+            "status_id",
+            sa.Integer,
+            sa.ForeignKey("status.id"),
+            nullable=False,
+            default=1,
         ),
     )
 

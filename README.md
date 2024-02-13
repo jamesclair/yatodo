@@ -6,6 +6,7 @@ An experimental todo app for my own personal use.  Who knows maybe it will be us
 - Poetry (version 1.5.1) (asdf)
 - Python 3.12.1 (asdf)
 - Docker version 25.0.2, build 29cf629 (brew cask)
+- kind 0.17.0 (asdf, depends on docker)
 
 ## Python Dependencies
 
@@ -43,3 +44,5 @@ See `https://localhost:8081/docs`
 - automate database setup
 - Setup automatic migrations through alembic
 - Add Tests for API, Models, Schema, Crud and Config
+- Remove initial secrets from files (only ran in isolated local envs, so this can wait for now)
+- 

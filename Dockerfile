@@ -28,7 +28,7 @@ FROM base AS dev
 
 RUN  --mount=type=cache,target=$POETRY_CACHE_DIR poetry install --with dev --no-root
 
-COPY ./.env-docker /code/.env
+COPY ./.env /code/.env
 # Copy only what you want
 # This should be as close to end as possible as it will change too often to use cache.
 

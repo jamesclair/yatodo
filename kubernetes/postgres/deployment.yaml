@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: yatodo-db
+  labels:
+    app: yatodo-db
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: yatodo-db
+  template:
+    metadata:
+      labels:
+        app: yatodo-db
+    spec:
+      containers:
+        - name: yatodo-db
+          image: postgres:14-alpine
+          resources:
+            requests:
+              cpu: "100m"
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 5432
+          env:
+            - name: POSTGRES_PASSWORD
+              value: postgres
+            - name: POSTGRES_USER
+              value: postgres
+            - name: PGDATA
+              value: postgres
+            - name: POSTGRES_DB
+              value: yatodo

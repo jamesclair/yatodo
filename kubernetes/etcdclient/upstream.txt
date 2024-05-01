@@ -1,0 +1,1 @@
+https://gist.githubusercontent.com/mauilion/2bab4b00eb7a0ab4fca7023ae251e8ee/raw/etcdclient.yaml

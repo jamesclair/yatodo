@@ -1,5 +1,4 @@
 resources:
-  - yatodo/deployment.yaml
-  - yatodo/service.yaml
-  - postgres/deployment.yaml
-  - postgres/service.yaml
+  - local_registry_configmap.yaml # should be near top to ensure local reg image refs are resolvable
+  - yatodo
+  - postgres

@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: yatodo
-          image: yatodo:v1.0.0
+          image: localhost:5001/yatodo:latest
           resources:
             requests:
               cpu: "100m"
